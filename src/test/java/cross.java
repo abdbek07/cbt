@@ -1,3 +1,5 @@
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -43,7 +45,7 @@ public class cross {
                 // If both clicks worked, then the following List should be have length 2
                 List<WebElement> elems = driver.findElements(By.className("done-true"));
                 // So we'll assert that this is correct.
-                Assert.assertEquals(2, elems.size());
+                AssertJUnit.assertEquals(2, elems.size());
 
                 System.out.println("Entering Text");
                 driver.findElement(By.id("todotext")).sendKeys("Run your first Selenium Test");
@@ -51,7 +53,7 @@ public class cross {
 
                 // Let's also assert that the todo we added is present in the list.
                 String spanText = driver.findElement(By.xpath("/html/body/div/div/div/ul/li[6]/span")).getText();
-                Assert.assertEquals("Run your first Selenium Test", spanText);
+                AssertJUnit.assertEquals("Run your first Selenium Test", spanText);
 
                 System.out.println("Archiving old todos");
                 driver.findElement(By.linkText("archive")).click();
@@ -59,7 +61,7 @@ public class cross {
                 // If our archive link worked, then the following list should have length 4.
                 elems = driver.findElements(By.className("done-false"));
                 // So will assert that this is true as well.
-                Assert.assertEquals(4, elems.size());
+                AssertJUnit.assertEquals(4, elems.size());
 
                 System.out.println("TestFinished");
     }
